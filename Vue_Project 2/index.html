@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login App</title>
+</head>
+<body>
+  <h2>Login</h2>
+  <input type="text" id="username" placeholder="Username" />
+  <input type="password" id="password" placeholder="Password" />
+  <button onclick="handleLogin()">Login</button>
+
+  <p id="message"></p>
+
+  <script>
+
+    function login(username, password) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (username === "admin" && password === "1234") {
+            resolve("Login successful!");
+          } else {
+            reject(" Invalid credentials.");
+          }
+        }, 1000); 
+      });
+    }
+
+
+    function handleLogin() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const messageElement = document.getElementById("message");
+
+      messageElement.textContent = " Logging in";
+
+      login(username, password)
+        .then(successMessage => {
+          messageElement.textContent = successMessage;
+        })
+        .catch(errorMessage => {
+          messageElement.textContent = errorMessage;
+        })
+        .finally(() => {
+          console.log("Login attempt finished");
+        });
+    }
+  </script>
+</body>
+</html>

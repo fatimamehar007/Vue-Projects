@@ -1,0 +1,25 @@
+/* Global parent color */
+body {
+  color: green; /* Inheritable property, passed to children */
+}
+
+/* 1. inherit: Forces element to take value from its parent */
+.inherit-example a {
+  color: inherit; /* Inherits green from body */
+}
+
+/* 2. initial: Resets to CSS spec default (not browser default) */
+.initial-example a {
+  color: initial; /* Uses initial value of color (usually black) */
+}
+
+/* 3. unset: Acts like inherit if the property is inheritable (like color), otherwise initial */
+.unset-example a {
+  color: unset; /* Behaves like inherit for color (green), like initial for non-inherited props */
+}
+
+/* 4. revert: Reverts to browser/user-agent default styling */
+.revert-example a {
+  color: revert; /* Returns to browser default link color (typically blue/purple) */
+}
+
